@@ -126,7 +126,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Rest-framework settings
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.AllowAny",
+        "rest_framework.permissions.IsAuthenticated",
     ],
 }
 
@@ -139,3 +139,7 @@ CORS_ORIGIN_WHITELIST = [
 CSRF_TRUSTED_ORIGIN = [
     'http://localhost:3000',
 ]
+
+# Auth redirect settings
+# LOGIN_REDIRECT_URL = "posts:post_list"
+# LOGOUT_REDIRECT_URL = "accounts:login"
