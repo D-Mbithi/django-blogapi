@@ -146,6 +146,11 @@ REST_FRAMEWORK = {
     ]
 }
 
+AUTHENTICATION_BACKENDS = (
+   "django.contrib.auth.backends.ModelBackend",
+   "allauth.account.auth_backends.AuthenticationBackend"
+)
+
 # Cors Settings
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
@@ -161,6 +166,18 @@ CSRF_TRUSTED_ORIGIN = [
 # LOGOUT_REDIRECT_URL = "accounts:login"
 
 # Email Backend configuration
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'http://localhost:8000/api/v1/dj-rest-auth/login/'
+LOGIN_URL = 'http://localhost:8000/api/v1/dj-rest-auth/login/'
 
 SITE_ID = 1
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'users.serializers.UserProfileSerializer'
+}
