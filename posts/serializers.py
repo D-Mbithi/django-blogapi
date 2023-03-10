@@ -12,6 +12,6 @@ class PostSerializer(ModelSerializer):
             "author",
             "title",
             "body",
-            "created",
+            "created"
         ]
         model = Post

@@ -16,4 +16,7 @@ urlpatterns = [
         VerifyEmailView.as_view(),
         name='account_email_verification_sent'
     ),
+    path("api/v1/", include('posts.urls', namespace="posts")),
+    path("api/v1/", include('accounts.urls', namespace="users")),
+
 ]
